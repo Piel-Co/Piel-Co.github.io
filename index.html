@@ -3,110 +3,191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piel&Co</title>
+
+<title>Piel & Co</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
-font-family: Arial, Helvetica, sans-serif;
-background:#f5f5f5;
-color:#333;
+padding:0;
+box-sizing:border-box;
 }
 
+body{
+font-family:Inter, sans-serif;
+background:#f8f8f8;
+color:#222;
+line-height:1.6;
+}
+
+/* HEADER */
+
 header{
-background:#1f1f1f;
-color:white;
-padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:28px 10%;
+background:#111;
+color:white;
 }
 
 header h1{
-margin:0;
-font-size:22px;
+font-family:"Playfair Display", serif;
+font-weight:500;
+letter-spacing:1px;
+font-size:24px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px;
+margin-left:30px;
 font-size:14px;
+opacity:0.8;
+transition:0.3s;
 }
 
+nav a:hover{
+opacity:1;
+}
+
+/* HERO */
+
 .hero{
-height:60vh;
+height:75vh;
 background:url("https://images.unsplash.com/photo-1598300053653-29c33a99b437") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
-color:white;
 text-align:center;
+color:white;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
 }
 
 .hero h2{
-font-size:40px;
-background:rgba(0,0,0,0.5);
+font-family:"Playfair Display", serif;
+font-size:48px;
+max-width:700px;
+position:relative;
 padding:20px;
 }
 
+/* SECCIONES */
+
 .section{
-padding:60px 10%;
+padding:100px 12%;
+max-width:1300px;
+margin:auto;
 }
 
 .section h3{
 text-align:center;
-margin-bottom:40px;
-font-size:28px;
+margin-bottom:60px;
+font-size:34px;
+font-family:"Playfair Display", serif;
 }
+
+/* PRODUCTOS */
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
 }
 
 .card{
 background:white;
-border-radius:8px;
+border-radius:10px;
 overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+transition:0.35s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 45px rgba(0,0,0,0.08);
 }
 
 .card img{
 width:100%;
-height:200px;
+height:220px;
 object-fit:cover;
 }
 
 .card h4{
-padding:15px;
-margin:0;
+padding:20px 20px 5px;
+font-family:"Playfair Display", serif;
+font-size:20px;
 }
 
 .card p{
-padding:0 15px 15px;
+padding:0 20px 10px;
 font-size:14px;
+color:#555;
 }
 
 .button{
 display:inline-block;
-background:#1f1f1f;
+background:#111;
 color:white;
-padding:10px 20px;
-margin:10px 15px 20px;
+padding:10px 18px;
+margin:15px 20px 25px;
 text-decoration:none;
 border-radius:4px;
-font-size:14px;
+font-size:13px;
+transition:0.3s;
 }
 
+.button:hover{
+background:#333;
+}
+
+/* TEXTO CENTRAL */
+
+.center-text{
+max-width:720px;
+margin:auto;
+text-align:center;
+font-size:18px;
+color:#555;
+}
+
+/* CONTACTO */
+
+.contact{
+text-align:center;
+font-size:18px;
+}
+
+.contact a{
+color:#111;
+text-decoration:none;
+border-bottom:1px solid #111;
+}
+
+/* FOOTER */
+
 footer{
-background:#1f1f1f;
+background:#111;
 color:white;
 text-align:center;
-padding:30px;
-margin-top:40px;
+padding:40px;
+margin-top:80px;
+font-size:14px;
+letter-spacing:1px;
 }
 
 </style>
@@ -115,13 +196,15 @@ margin-top:40px;
 <body>
 
 <header>
-<h1>Piel&Co</h1>
+
+<h1>Piel & Co</h1>
 
 <nav>
 <a href="#productos">Productos</a>
 <a href="#fabricacion">Fabricación</a>
 <a href="#contacto">Contacto</a>
 </nav>
+
 </header>
 
 
@@ -131,51 +214,57 @@ margin-top:40px;
 
 
 <section class="section" id="productos">
-<h3>Productos</h3>
+
+<h3>Piezas</h3>
 
 <div class="products">
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1618354691321-1b9e6d6c4c2e">
 <h4>Cartera artesanal</h4>
-<p>Cuero natural trabajado a mano.</p>
+<p>Cuero natural trabajado a mano con técnicas tradicionales.</p>
 <a class="button">Ver producto</a>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7">
-<h4>Cinturón de cuero</h4>
-<p>Fabricado con piel de alta calidad.</p>
+<h4>Cinturón clásico</h4>
+<p>Piel de alta calidad pensada para durar años.</p>
 <a class="button">Ver producto</a>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa">
 <h4>Funda para reloj</h4>
-<p>Diseño minimalista y resistente.</p>
+<p>Diseño minimalista y resistente para uso diario.</p>
 <a class="button">Ver producto</a>
 </div>
 
 </div>
+
 </section>
 
 
-<section class="section" id="fabricación">
+<section class="section" id="fabricacion">
+
 <h3>El proceso</h3>
 
-<p style="max-width:700px;margin:auto;text-align:center;">
-Creamos productos de piel hechos a mano con técnicas tradicionales. 
-Cada pieza se fabrica cuidadosamente para durar años y mejorar con el uso. Al ser un proceso manual y cosido a mano cada pieza es única.
+<p class="center-text">
+Cada pieza nace de un proceso completamente manual. Seleccionamos piel natural,
+la cortamos, la trabajamos y la cosemos a mano utilizando técnicas tradicionales.
+El resultado son objetos duraderos que mejoran con el tiempo y desarrollan su propia
+personalidad con el uso.
 </p>
 
 </section>
 
 
 <section class="section" id="contacto">
+
 <h3>Contacto</h3>
 
-<p style="text-align:center">
-Email: albertoandresp@gmail.com
+<p class="contact">
+<a href="mailto:albertoandresp@gmail.com">albertoandresp@gmail.com</a>
 </p>
 
 </section>
