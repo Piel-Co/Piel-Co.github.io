@@ -1,14 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Mi primera web</title>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller de piel</title>
+
+<style>
+
+body{
+margin:0;
+font-family: Arial, Helvetica, sans-serif;
+background:#f5f5f5;
+color:#333;
+}
+
+header{
+background:#1f1f1f;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header h1{
+margin:0;
+font-size:22px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-size:14px;
+}
+
+.hero{
+height:60vh;
+background:url("https://images.unsplash.com/photo-1598300053653-29c33a99b437") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+text-align:center;
+}
+
+.hero h2{
+font-size:40px;
+background:rgba(0,0,0,0.5);
+padding:20px;
+}
+
+.section{
+padding:60px 10%;
+}
+
+.section h3{
+text-align:center;
+margin-bottom:40px;
+font-size:28px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:8px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card h4{
+padding:15px;
+margin:0;
+}
+
+.card p{
+padding:0 15px 15px;
+font-size:14px;
+}
+
+.button{
+display:inline-block;
+background:#1f1f1f;
+color:white;
+padding:10px 20px;
+margin:10px 15px 20px;
+text-decoration:none;
+border-radius:4px;
+font-size:14px;
+}
+
+footer{
+background:#1f1f1f;
+color:white;
+text-align:center;
+padding:30px;
+margin-top:40px;
+}
+
+</style>
 </head>
 
-<body style="font-family: Arial; text-align:center; margin-top:100px;">
-  
-  <h1>Bienvenido a mi web</h1>
-  <p>Esta web está alojada gratis con GitHub Pages.</p>
+<body>
+
+<header>
+<h1>Taller de piel</h1>
+
+<nav>
+<a href="#productos">Productos</a>
+<a href="#historia">Historia</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</header>
+
+
+<section class="hero">
+<h2>Productos de piel hechos a mano</h2>
+</section>
+
+
+<section class="section" id="productos">
+<h3>Productos</h3>
+
+<div class="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1618354691321-1b9e6d6c4c2e">
+<h4>Cartera artesanal</h4>
+<p>Cuero natural trabajado a mano.</p>
+<a class="button">Ver producto</a>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7">
+<h4>Cinturón de cuero</h4>
+<p>Fabricado con piel de alta calidad.</p>
+<a class="button">Ver producto</a>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa">
+<h4>Funda para reloj</h4>
+<p>Diseño minimalista y resistente.</p>
+<a class="button">Ver producto</a>
+</div>
+
+</div>
+</section>
+
+
+<section class="section" id="historia">
+<h3>El taller</h3>
+
+<p style="max-width:700px;margin:auto;text-align:center;">
+Creamos productos de piel hechos a mano con técnicas tradicionales. 
+Cada pieza se fabrica cuidadosamente para durar años y mejorar con el uso.
+</p>
+
+</section>
+
+
+<section class="section" id="contacto">
+<h3>Contacto</h3>
+
+<p style="text-align:center">
+Email: contacto@tumarca.com
+</p>
+
+</section>
+
+
+<footer>
+© 2026 Taller de piel artesanal
+</footer>
 
 </body>
 </html>
