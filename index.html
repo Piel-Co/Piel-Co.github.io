@@ -1,432 +1,658 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <title>Zay Shop eCommerce HTML CSS Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
-
-    <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piel&amp;Co | Artesanía en Cuero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&amp;family=Playfair+Display:wght@400;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&amp;family=Playfair+Display:wght@400;700&amp;display=swap');
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://picsum.photos/id/866/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(139 69 19 / 0.25);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #8B4513;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .handwritten {
+            font-family: 'Great Vibes', cursive;
+        }
+        
+        .elegant-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
+<body class="tail-container bg-stone-50 text-stone-800 overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Logo -->
+            <div onclick="document.getElementById('hero').scrollIntoView({ behavior: 'smooth' })" 
+                 class="flex items-center gap-3 cursor-pointer">
+                <div class="w-10 h-10 bg-amber-900 rounded-full flex items-center justify-center text-white text-2xl">🧶</div>
+                <div>
+                    <span class="handwritten text-4xl tracking-widest text-amber-900">Piel&amp;Co</span>
+                </div>
+            </div>
 
-<body>
-    <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                </div>
-                <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
+            <!-- Menú -->
+            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                <a href="#productos" onclick="smoothScrollTo('productos')" class="nav-link text-stone-700 hover:text-amber-900">Productos</a>
+                <a href="#proceso" onclick="smoothScrollTo('proceso')" class="nav-link text-stone-700 hover:text-amber-900">Proceso</a>
+                <a href="#contacto" onclick="smoothScrollTo('contacto')" class="nav-link text-stone-700 hover:text-amber-900">Contacto</a>
+            </div>
+
+            <!-- Carrito y móvil -->
+            <div class="flex items-center gap-6">
+                <button onclick="showCartModal()" 
+                        class="relative flex items-center gap-2 text-stone-700 hover:text-amber-900 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-amber-900 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </button>
+                
+                <!-- Botón móvil -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-stone-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-4">
+            <div class="flex flex-col gap-4 text-sm font-medium">
+                <a href="#productos" onclick="smoothScrollTo('productos');toggleMobileMenu()" class="py-2">Productos</a>
+                <a href="#proceso" onclick="smoothScrollTo('proceso');toggleMobileMenu()" class="py-2">Proceso</a>
+                <a href="#contacto" onclick="smoothScrollTo('contacto');toggleMobileMenu()" class="py-2">Contacto</a>
             </div>
         </div>
     </nav>
-    <!-- Close Top Nav -->
 
-
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Zay
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- HERO -->
+    <header id="hero" class="hero-bg h-screen flex items-center justify-center text-white relative">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <span class="inline-block px-6 py-1.5 bg-white/10 backdrop-blur-md text-xs tracking-[3px] rounded-full mb-6">ARTESANÍA ESPAÑOLA DESDE 2024</span>
+            <h1 class="handwritten text-7xl md:text-8xl leading-none mb-4 tracking-wider">Piel&amp;Co</h1>
+            <p class="elegant-serif text-2xl md:text-3xl max-w-md mx-auto mb-10">Cuero hecho a mano. Pasión por los detalles.</p>
+            <button onclick="smoothScrollTo('productos')" 
+                    class="bg-white text-amber-900 hover:bg-amber-100 transition-all px-10 py-4 rounded-full text-sm font-semibold tracking-wider flex items-center gap-3 mx-auto">
+                EXPLORAR COLECCIÓN
+                <span class="text-xl">→</span>
             </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
-            </div>
-
         </div>
-    </nav>
-    <!-- Close Header -->
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-widest mb-2">SCROLL</div>
+            <div class="w-px h-12 bg-white/50 animate-pulse"></div>
+        </div>
+    </header>
 
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- PRODUCTOS -->
+    <section id="productos" class="max-w-7xl mx-auto px-6 py-24">
+        <div class="text-center mb-16">
+            <span class="uppercase text-amber-900 text-xs tracking-[2px] font-medium">NUESTRA COLECCIÓN</span>
+            <h2 class="elegant-serif text-5xl mt-2 mb-4">Piezas únicas, creadas con alma</h2>
+            <p class="max-w-md mx-auto text-stone-600">Cada producto es elaborado manualmente en Madrid con cuero de primera calidad.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10" id="products-grid">
+            <!-- Los productos se generan con JavaScript -->
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso" class="bg-stone-100 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="uppercase text-amber-900 text-xs tracking-[2px]">EL ARTE DETRÁS DE CADA PIEZA</span>
+                <h2 class="elegant-serif text-5xl mt-3">Nuestro proceso artesanal</h2>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Paso 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-900 rounded-2xl flex items-center justify-center text-3xl mb-6">1</div>
+                    <h3 class="elegant-serif text-2xl mb-3">Selección de la piel</h3>
+                    <p class="text-stone-600 leading-relaxed">Elegimos personalmente cueros italianos y españoles de curtidos tradicionales. Solo las mejores piezas.</p>
+                    <div class="mt-8 h-48 bg-cover bg-center rounded-2xl" 
+                         style="background-image: url('https://picsum.photos/id/1016/600/400')"></div>
+                </div>
+                
+                <!-- Paso 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-900 rounded-2xl flex items-center justify-center text-3xl mb-6">2</div>
+                    <h3 class="elegant-serif text-2xl mb-3">Diseño y corte</h3>
+                    <p class="text-stone-600 leading-relaxed">Cada patrón se dibuja a mano y se corta con precisión milimétrica para garantizar la máxima calidad.</p>
+                    <div class="mt-8 h-48 bg-cover bg-center rounded-2xl" 
+                         style="background-image: url('https://picsum.photos/id/201/600/400')"></div>
+                </div>
+                
+                <!-- Paso 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-900 rounded-2xl flex items-center justify-center text-3xl mb-6">3</div>
+                    <h3 class="elegant-serif text-2xl mb-3">Costura a mano</h3>
+                    <p class="text-stone-600 leading-relaxed">Utilizamos la técnica de saddle stitch, la más resistente y elegante del mundo del cuero.</p>
+                    <div class="mt-8 h-48 bg-cover bg-center rounded-2xl" 
+                         style="background-image: url('https://picsum.photos/id/160/600/400')"></div>
+                </div>
+                
+                <!-- Paso 4 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-900 rounded-2xl flex items-center justify-center text-3xl mb-6">4</div>
+                    <h3 class="elegant-serif text-2xl mb-3">Acabado final</h3>
+                    <p class="text-stone-600 leading-relaxed">Aceites naturales, bordes pintados a mano y un control exhaustivo de calidad antes de enviarte tu pieza.</p>
+                    <div class="mt-8 h-48 bg-cover bg-center rounded-2xl" 
+                         style="background-image: url('https://picsum.photos/id/29/600/400')"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS MODAL -->
+    <div id="product-modal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white max-w-2xl w-full rounded-3xl overflow-hidden shadow-2xl">
+            <div class="flex">
+                <!-- Imagen -->
+                <div id="modal-image" class="w-5/12 bg-stone-100 h-full min-h-[500px] bg-cover bg-center"></div>
+                
+                <!-- Contenido -->
+                <div class="flex-1 p-10">
+                    <button onclick="closeProductModal()" 
+                            class="float-right text-stone-400 hover:text-stone-800 text-3xl leading-none">×</button>
+                    
+                    <div id="modal-name" class="elegant-serif text-4xl font-medium mb-2"></div>
+                    <div id="modal-price" class="text-3xl text-amber-900 font-semibold mb-8"></div>
+                    
+                    <div id="modal-desc" class="text-stone-600 leading-relaxed mb-10"></div>
+                    
+                    <div class="flex gap-4">
+                        <button onclick="addCurrentToCart()" 
+                                class="flex-1 bg-amber-900 hover:bg-amber-800 transition-colors text-white py-5 rounded-2xl text-sm font-semibold tracking-widest">
+                            AÑADIR AL CARRITO
+                        </button>
+                        <button onclick="closeProductModal()" 
+                                class="flex-1 border border-stone-300 hover:bg-stone-50 transition-colors py-5 rounded-2xl text-sm font-semibold">
+                            CERRAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARRITO MODAL -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black/70 z-[110] flex items-end md:items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white w-full max-w-lg rounded-t-3xl md:rounded-3xl shadow-2xl max-h-[90vh] flex flex-col">
+            
+            <!-- Cabecera -->
+            <div class="px-8 py-6 border-b flex justify-between items-center">
+                <h3 class="text-2xl elegant-serif">Tu carrito</h3>
+                <button onclick="closeCartModal()" class="text-3xl text-stone-400 hover:text-stone-900">×</button>
+            </div>
+            
+            <!-- Items -->
+            <div id="cart-items" class="flex-1 overflow-auto px-8 py-6 space-y-8">
+                <!-- Generado por JS -->
+            </div>
+            
+            <!-- Total -->
+            <div class="px-8 py-8 border-t bg-stone-50">
+                <div class="flex justify-between text-lg mb-6">
+                    <span class="font-medium">Total</span>
+                    <span id="cart-total" class="font-semibold text-3xl text-amber-900">0 €</span>
+                </div>
+                <button onclick="checkout()" 
+                        class="w-full bg-amber-900 hover:bg-amber-800 text-white py-6 rounded-2xl text-sm font-semibold tracking-widest transition-all">
+                    FINALIZAR COMPRA
+                </button>
+                <p class="text-center text-xs text-stone-500 mt-4">Envío gratuito en pedidos superiores a 150€ • Pago seguro</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="max-w-7xl mx-auto px-6 py-24 bg-white">
+        <div class="grid md:grid-cols-2 gap-20">
+            <!-- Formulario -->
+            <div>
+                <span class="uppercase text-xs tracking-widest text-amber-900">¿TIENES ALGUNA PREGUNTA?</span>
+                <h2 class="elegant-serif text-5xl mt-3 mb-12">Hablemos</h2>
+                
+                <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-8">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Nombre completo</label>
+                        <input type="text" id="name" required 
+                               class="w-full px-6 py-4 border border-stone-200 rounded-2xl focus:outline-none focus:border-amber-900">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Correo electrónico</label>
+                        <input type="email" id="email" required 
+                               class="w-full px-6 py-4 border border-stone-200 rounded-2xl focus:outline-none focus:border-amber-900">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Mensaje</label>
+                        <textarea id="message" rows="6" required
+                                  class="w-full px-6 py-4 border border-stone-200 rounded-2xl focus:outline-none focus:border-amber-900 resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit"
+                            class="w-full bg-amber-900 hover:bg-amber-800 text-white py-6 rounded-2xl text-sm font-semibold tracking-widest transition-all">
+                        ENVIAR MENSAJE
                     </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/banner_img_01.jpg" alt="">
+                </form>
+            </div>
+            
+            <!-- Info -->
+            <div class="flex flex-col justify-center">
+                <div class="bg-stone-50 p-10 rounded-3xl">
+                    <h3 class="text-xl mb-8">Piel&amp;Co Atelier</h3>
+                    <div class="space-y-8">
+                        <div class="flex gap-6">
+                            <div class="text-amber-900">📍</div>
+                            <div>
+                                <p class="font-medium">Madrid, España</p>
+                                <p class="text-stone-600 text-sm">Calle de la Palma 23, Malasaña</p>
+                            </div>
                         </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>Zay</b> eCommerce</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                                <p>
-                                    Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta 1). 
-                                    This template is 100% free provided by <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">TemplateMo</a> website. 
-                                    Image credits go to <a rel="sponsored" class="text-success" href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
-                                    <a rel="sponsored" class="text-success" href="https://unsplash.com/" target="_blank">Unsplash</a> and
-                                    <a rel="sponsored" class="text-success" href="https://icons8.com/" target="_blank">Icons 8</a>.
-                                </p>
+                        <div class="flex gap-6">
+                            <div class="text-amber-900">✉️</div>
+                            <div>
+                                <a href="mailto:hola@pielandco.es" class="hover:underline">hola@pielandco.es</a>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-amber-900">📞</div>
+                            <div>
+                                <a href="tel:+34666123456" class="hover:underline">+34 666 123 456</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/banner_img_02.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Proident occaecat</h1>
-                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
-                                <p>
-                                    You are permitted to use this Zay CSS template for your commercial websites. 
-                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any kind of template collection websites.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/banner_img_03.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Repr in voluptate</h1>
-                                <h3 class="h2">Ullamco laboris nisi ut </h3>
-                                <p>
-                                    We bring you 100% free CSS templates for your websites. 
-                                    If you wish to support TemplateMo, please make a small contribution via PayPal or tell your friends about our website. Thank you.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
-    </div>
-    <!-- End Banner Hero -->
-
-
-    <!-- Start Categories of The Month -->
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Categories of The Month</h1>
-                <p>
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                
+                <p class="mt-10 text-sm text-stone-500 max-w-xs">
+                    Estamos abiertos de martes a sábado. Visítanos en nuestro taller o escribe para un pedido personalizado.
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">Watches</h5>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-            </div>
-        </div>
     </section>
-    <!-- End Categories of The Month -->
 
-
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Featured Product</h1>
-                    <p>
-                        Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident.
-                    </p>
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 bg-amber-200 rounded-full flex items-center justify-center text-amber-900 text-xl">🧶</div>
+                    <span class="handwritten text-4xl">Piel&amp;Co</span>
+                </div>
+                <p class="text-stone-400 text-sm">Artesanía en cuero desde el corazón de Madrid.</p>
+            </div>
+            
+            <div class="text-sm">
+                <div class="grid grid-cols-2 gap-x-12 gap-y-2">
+                    <a href="#productos" onclick="smoothScrollTo('productos')" class="hover:text-amber-300">Productos</a>
+                    <a href="#proceso" onclick="smoothScrollTo('proceso')" class="hover:text-amber-300">Proceso</a>
+                    <a href="#contacto" onclick="smoothScrollTo('contacto')" class="hover:text-amber-300">Contacto</a>
+                    <a href="#" class="hover:text-amber-300">Envíos</a>
+                    <a href="#" class="hover:text-amber-300">Devoluciones</a>
+                    <a href="#" class="hover:text-amber-300">Preguntas frecuentes</a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="./assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$240.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
-                            </p>
-                            <p class="text-muted">Reviews (24)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="./assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$480.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
-                            <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
-                            </p>
-                            <p class="text-muted">Reviews (48)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="./assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$360.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
-                            <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                            </p>
-                            <p class="text-muted">Reviews (74)</p>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="text-xs text-stone-500">
+                © 2026 Piel&amp;Co. Todos los derechos reservados.<br>
+                Hecho con pasión en Madrid.
             </div>
         </div>
-    </section>
-    <!-- End Featured Product -->
-
-
-    <!-- Start Footer -->
-    <footer class="bg-dark" id="tempaltemo_footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li>
-                            <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
-                        </li>
-                        <li>
-                            <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="row text-light mb-4">
-                <div class="col-12 mb-3">
-                    <div class="w-100 my-3 border-top border-light"></div>
-                </div>
-                <div class="col-auto me-auto">
-                    <ul class="list-inline text-left footer-icons">
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-100 bg-black py-3">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-12">
-                        <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </footer>
-    <!-- End Footer -->
 
-    <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <!-- End Script -->
+    <!-- TOAST -->
+    <div id="toast" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 bg-stone-800 text-white px-8 py-4 rounded-3xl shadow-2xl text-sm flex items-center gap-3">
+        <span id="toast-text"></span>
+    </div>
+
+    <script>
+        // Tailwind config
+        tailwind.config = {
+            content: [],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        handwritten: ['Great Vibes', 'cursive'],
+                        elegant: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+        
+        // Productos
+        let products = [
+            {
+                id: 1,
+                name: "Bolso de Hombro Artesanal",
+                price: 129,
+                desc: "Bolso de hombro en cuero vacuno italiano de plena flor. Interior con bolsillo y forro de algodón orgánico. Dimensiones: 32 × 28 × 12 cm.",
+                img: "https://picsum.photos/id/1015/800/800"
+            },
+            {
+                id: 2,
+                name: "Cartera de Cuero Clásica",
+                price: 59,
+                desc: "Cartera bifold con 6 compartimentos para tarjetas y un bolsillo para billetes. Cuero de primera calidad con acabado envejecido natural.",
+                img: "https://picsum.photos/id/160/800/800"
+            },
+            {
+                id: 3,
+                name: "Cinturón de Piel Premium",
+                price: 45,
+                desc: "Cinturón reversible de 3.5 cm de ancho. Hebilla de latón macizo y 5 agujeros ajustables. Disponible en negro y marrón cognac.",
+                img: "https://picsum.photos/id/201/800/800"
+            }
+        ]
+        
+        let cart = []
+        let currentProductId = null
+        
+        // Renderizar productos
+        function renderProducts() {
+            const container = document.getElementById('products-grid')
+            container.innerHTML = ''
+            
+            products.forEach(product => {
+                const card = document.createElement('div')
+                card.className = `product-card bg-white rounded-3xl overflow-hidden shadow-sm cursor-pointer`
+                card.innerHTML = `
+                    <div onclick="showProductModal(${product.id})" class="h-80 bg-cover bg-center" 
+                         style="background-image: url('${product.img}')"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 onclick="showProductModal(${product.id})" class="elegant-serif text-2xl hover:underline">${product.name}</h3>
+                                <p class="text-amber-900 text-2xl font-semibold mt-1">${product.price} €</p>
+                            </div>
+                        </div>
+                        <p class="text-stone-600 text-sm line-clamp-3 mb-8">${product.desc.substring(0, 110)}...</p>
+                        
+                        <div class="flex gap-4">
+                            <button onclick="event.stopImmediatePropagation(); addToCart(${product.id});" 
+                                    class="flex-1 bg-amber-900 text-white py-4 rounded-2xl text-xs font-semibold tracking-widest hover:bg-amber-800 transition">
+                                AÑADIR AL CARRITO
+                            </button>
+                            <button onclick="event.stopImmediatePropagation(); showProductModal(${product.id});" 
+                                    class="flex-1 border border-stone-300 py-4 rounded-2xl text-xs font-semibold hover:bg-stone-50 transition">
+                                VER DETALLES
+                            </button>
+                        </div>
+                    </div>
+                `
+                container.appendChild(card)
+            })
+        }
+        
+        // Mostrar modal de producto
+        function showProductModal(id) {
+            currentProductId = id
+            const product = products.find(p => p.id === id)
+            if (!product) return
+            
+            document.getElementById('modal-image').style.backgroundImage = `url('${product.img}')`
+            document.getElementById('modal-name').textContent = product.name
+            document.getElementById('modal-price').innerHTML = `${product.price} <span class="text-base font-normal">€</span>`
+            document.getElementById('modal-desc').textContent = product.desc
+            
+            document.getElementById('product-modal').classList.remove('hidden')
+            document.getElementById('product-modal').classList.add('flex')
+        }
+        
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal')
+            modal.classList.add('hidden')
+            modal.classList.remove('flex')
+        }
+        
+        // Añadir producto actual desde modal
+        function addCurrentToCart() {
+            if (currentProductId) {
+                addToCart(currentProductId)
+                closeProductModal()
+            }
+        }
+        
+        // Añadir al carrito
+        function addToCart(id) {
+            const product = products.find(p => p.id === id)
+            if (!product) return
+            
+            const existing = cart.find(item => item.id === id)
+            
+            if (existing) {
+                existing.qty = (existing.qty || 1) + 1
+            } else {
+                cart.push({
+                    ...product,
+                    qty: 1
+                })
+            }
+            
+            updateCartCount()
+            showToast(`${product.name} añadido al carrito`)
+        }
+        
+        // Actualizar contador carrito
+        function updateCartCount() {
+            let count = 0
+            cart.forEach(item => count += item.qty || 1)
+            document.getElementById('cart-count').textContent = count
+        }
+        
+        // Renderizar items del carrito
+        function renderCart() {
+            const container = document.getElementById('cart-items')
+            container.innerHTML = ''
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-stone-400">
+                        <div class="mx-auto w-16 h-16 bg-stone-100 rounded-2xl flex items-center justify-center text-4xl mb-6">👜</div>
+                        <p class="text-lg">Tu carrito está vacío</p>
+                        <p class="text-sm mt-2">¡Añade alguna de nuestras piezas!</p>
+                    </div>
+                `
+                document.getElementById('cart-total').textContent = '0 €'
+                return
+            }
+            
+            let total = 0
+            
+            cart.forEach((item, index) => {
+                const subtotal = item.price * (item.qty || 1)
+                total += subtotal
+                
+                const div = document.createElement('div')
+                div.className = 'cart-item flex gap-6'
+                div.innerHTML = `
+                    <div class="w-24 h-24 bg-cover bg-center rounded-2xl flex-shrink-0" 
+                         style="background-image: url('${item.img}')"></div>
+                    <div class="flex-1">
+                        <div class="flex justify-between">
+                            <div>
+                                <h4 class="font-medium">${item.name}</h4>
+                                <p class="text-sm text-stone-500">${item.price} € × ${item.qty || 1}</p>
+                            </div>
+                            <div onclick="removeFromCart(${index});" 
+                                 class="text-red-400 hover:text-red-600 cursor-pointer text-xl">×</div>
+                        </div>
+                        
+                        <div class="mt-6 flex items-center gap-4">
+                            <button onclick="changeQty(${index}, -1)" 
+                                    class="w-8 h-8 flex items-center justify-center border border-stone-300 hover:bg-stone-100 rounded-xl">-</button>
+                            <span class="w-8 text-center font-medium">${item.qty || 1}</span>
+                            <button onclick="changeQty(${index}, 1)" 
+                                    class="w-8 h-8 flex items-center justify-center border border-stone-300 hover:bg-stone-100 rounded-xl">+</button>
+                        </div>
+                    </div>
+                    <div class="text-right font-semibold text-lg">${subtotal} €</div>
+                `
+                container.appendChild(div)
+            })
+            
+            document.getElementById('cart-total').textContent = `${total} €`
+        }
+        
+        function changeQty(index, delta) {
+            cart[index].qty = (cart[index].qty || 1) + delta
+            if (cart[index].qty < 1) cart[index].qty = 1
+            renderCart()
+            updateCartCount()
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1)
+            renderCart()
+            updateCartCount()
+        }
+        
+        // Mostrar modal carrito
+        function showCartModal() {
+            renderCart()
+            const modal = document.getElementById('cart-modal')
+            modal.classList.remove('hidden')
+            modal.classList.add('flex')
+        }
+        
+        function closeCartModal() {
+            const modal = document.getElementById('cart-modal')
+            modal.classList.add('hidden')
+            modal.classList.remove('flex')
+        }
+        
+        // Checkout simulado
+        function checkout() {
+            if (cart.length === 0) return
+            closeCartModal()
+            setTimeout(() => {
+                showToast('¡Compra realizada con éxito! 🎉 Gracias por elegir Piel&amp;Co')
+                cart = []
+                updateCartCount()
+            }, 400)
+        }
+        
+        // Manejar envío formulario contacto
+        function handleContactSubmit(e) {
+            e.preventDefault()
+            
+            const name = document.getElementById('name').value
+            
+            // Reset form
+            e.target.reset()
+            
+            // Mensaje éxito
+            showToast(`¡Gracias ${name.split(' ')[0]}! Tu mensaje ha sido enviado.`)
+        }
+        
+        // Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast')
+            document.getElementById('toast-text').innerHTML = message
+            toast.classList.remove('hidden')
+            toast.style.transform = 'translate(-50%, 0)'
+            
+            setTimeout(() => {
+                toast.style.transform = 'translate(-50%, 80px)'
+                setTimeout(() => {
+                    toast.classList.add('hidden')
+                }, 400)
+            }, 3000)
+        }
+        
+        // Scroll suave
+        function smoothScrollTo(section) {
+            const el = document.getElementById(section)
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' })
+            }
+        }
+        
+        // Menú móvil
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu')
+            menu.classList.toggle('hidden')
+        }
+        
+        // Inicialización
+        window.onload = function() {
+            renderProducts()
+            updateCartCount()
+            
+            // Cerrar modales al hacer clic fuera
+            const productModal = document.getElementById('product-modal')
+            productModal.addEventListener('click', function(e) {
+                if (e.target === this) closeProductModal()
+            })
+            
+            const cartModal = document.getElementById('cart-modal')
+            cartModal.addEventListener('click', function(e) {
+                if (e.target === this) closeCartModal()
+            })
+            
+            // Tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    const pModal = document.getElementById('product-modal')
+                    const cModal = document.getElementById('cart-modal')
+                    if (!pModal.classList.contains('hidden')) closeProductModal()
+                    else if (!cModal.classList.contains('hidden')) closeCartModal()
+                }
+            })
+            
+            // Mensaje bienvenida discreto
+            console.log('%c✅ Tienda Piel&Co lista y 100% funcional', 'color:#8B4513; font-family:monospace')
+        }
+    </script>
 </body>
-
 </html>
